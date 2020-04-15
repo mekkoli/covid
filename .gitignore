@@ -129,7 +129,7 @@ dmypy.json
 .pyre/
 
 #marco 2020-04-15
-bkUp/
-docs/
-graph/
-plot/
+bkUp/*
+docs/*
+graph/*
+plot/*
