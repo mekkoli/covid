@@ -1,2 +1,0 @@
-iss https://www.epicentro.iss.it/coronavirus/cosa-sono
-oms https://www.who.int/health-topics/coronavirus#tab=tab_1
