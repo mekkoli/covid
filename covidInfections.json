@@ -1,0 +1,17 @@
+{
+  "covidWorld": {
+    "graph":              true,
+    "plot":               true,
+    "fileName":           "",     "hlp": "file name with explicit parametrs",
+    "dirName":            "data", "hlp": "subdir where put data csv files",
+    "dimX":               120,    "hlp": "height",
+    "dimY":               20,     "hlp": "width",
+    "population":         0,      "hlp": "population",
+    "humanDensity":       0.1,    "hlp": "human density or cells density",
+    "infectProb":         0.5,    "hlp": "infection probability",
+    "infectDuration":     15,     "hlp": "desease duration", 
+    "socialSeparation":   0.1,    "hlp": "mean prob to travel when infected without mask or hands clean ...",
+    "maxInfected":        0,      "hlp": "max infected",
+    "cicles":             0,      "hlp": "days",
+  }  
+}

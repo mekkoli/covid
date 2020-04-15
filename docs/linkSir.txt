@@ -1,0 +1,5 @@
+https://scipython.com/book/chapter-8-scipy/additional-examples/the-sir-epidemic-model/
+https://towardsdatascience.com/social-distancing-to-slow-the-coronavirus-768292f04296
+https://trinket.io/python/91fb8b17ba
+https://medium.com/@bhaskark2/simulating-covid-19-in-6-lines-of-code-the-sir-epidemic-model-89aab118cb7b
+https://github.com/lookee/seir-model/blob/master/SEIR_model.ipynb
