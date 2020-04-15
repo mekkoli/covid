@@ -1,5 +1,5 @@
 {
-  "covidWorld": {
+    "covidWorld": {
     "graph":              true,
     "plot":               true,
     "fileName":           "",     "hlp": "file name with explicit parametrs",
@@ -12,6 +12,6 @@
     "infectDuration":     15,     "hlp": "desease duration", 
     "socialSeparation":   0.1,    "hlp": "mean prob to travel when infected without mask or hands clean ...",
     "maxInfected":        0,      "hlp": "max infected",
-    "cicles":             0,      "hlp": "days",
-  }  
+    "cicles":             0,      "hlp": "days"
+    }  
 }

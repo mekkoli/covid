@@ -30,8 +30,6 @@ LEGENDsIZE = 60
 TXTsPACE = 10
 "copied in active directory"
 FONT = "font/FreeMonoBold.ttf"
-from time import sleep
-import json
 
 class covidInfections:
   """
@@ -336,26 +334,30 @@ def plot(dataPlot):
   plt.show()
 
 def main():
-  init = {
-    "graph":              True,
-    "plot":               True,
-    "fileName":           "",     # file name with explicit parametrs
-    "dirName":            "data", # subdir where put data csv files
-    "dimX":               120,   # height
-    "dimY":               20,   # width 
-    "population":         0,      # population
-    "humanDensity":       0.1,    # human density or cells density
-    "infectProb":         0.5,    # infection probability
-    "infectDuration":     15,     # desease duration 
-    "socialSeparation":   0.1,    # mean prob to travel when infected without mask or hands clean ...
-    "maxInfected":        0,      # max infected
-    "cicles":             0,      # days
-  }  
-  if init["graph"]:
-    initGraph(init["dimX"], init["dimY"])
-  w=covidInfections(init)
+  with open('covidInfections.json') as f:
+    covidWorld = json.load(f)["covidWorld"]
+  """
+    init = {
+      "graph":              True,
+      "plot":               True,
+      "fileName":           "",     # file name with explicit parametrs
+      "dirName":            "data", # subdir where put data csv files
+      "dimX":               120,   # height
+      "dimY":               20,   # width 
+      "population":         0,      # population
+      "humanDensity":       0.1,    # human density or cells density
+      "infectProb":         0.5,    # infection probability
+      "infectDuration":     15,     # desease duration 
+      "socialSeparation":   0.1,    # mean prob to travel when infected without mask or hands clean ...
+      "maxInfected":        0,      # max infected
+      "cicles":             0,      # days
+    }
+  """  
+  if covidWorld["graph"]:
+    initGraph(covidWorld["dimX"], covidWorld["dimY"])
+  w=covidInfections(covidWorld)
   w.cicleWorld()
-  while True and init["graph"]:
+  while True and covidWorld["graph"]:
     for event in pygame.event.get():
       if event.type == QUIT:
         pygame.quit()
