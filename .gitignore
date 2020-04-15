@@ -129,7 +129,6 @@ dmypy.json
 .pyre/
 
 #marco 2020-04-15
-data/
 bkUp/
 docs/
 graph/
