@@ -244,7 +244,7 @@ class covidInfections:
         "y2Label":      "infected",
         "y3Label":      "recovered",
         "xLabel":       "time [cicles]",
-        "yLabel":       "infected [n]",
+        "yLabel":       "people [n]",
         "legendLoc":    "upper left",
         "legendBox":    (0.7, 0.5)
       }
@@ -303,7 +303,7 @@ def plot(dataPlot):
     "y2Label":      "socialSep 0.6",
     "y3Label":      "socialSep 0.6",
     "xLabel":       "time [cicles]",
-    "yLabel":       "infected [n]",
+    "yLabel":       "people [n]",
     "legendLoc":    "upper left",
     "legendBox":    (-0.01, 1.16)
   }
@@ -336,23 +336,6 @@ def plot(dataPlot):
 def main():
   with open('covidInfections.json') as f:
     covidWorld = json.load(f)["covidWorld"]
-  """
-    init = {
-      "graph":              True,
-      "plot":               True,
-      "fileName":           "",     # file name with explicit parametrs
-      "dirName":            "data", # subdir where put data csv files
-      "dimX":               120,   # height
-      "dimY":               20,   # width 
-      "population":         0,      # population
-      "humanDensity":       0.1,    # human density or cells density
-      "infectProb":         0.5,    # infection probability
-      "infectDuration":     15,     # desease duration 
-      "socialSeparation":   0.1,    # mean prob to travel when infected without mask or hands clean ...
-      "maxInfected":        0,      # max infected
-      "cicles":             0,      # days
-    }
-  """  
   if covidWorld["graph"]:
     initGraph(covidWorld["dimX"], covidWorld["dimY"])
   w=covidInfections(covidWorld)
