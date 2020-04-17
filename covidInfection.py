@@ -1,11 +1,15 @@
+# git
+# git add file
+# git commit -m "msg"
+# git push master origin
 # todo:
 # add dead cell with prob grey
-# graph display movements
-# https://docs.w3cub.com/pygame/
-
+# add compare 2 world
+# graph display movements: line /line, exist line(color) line(/color) ?
 
 import random
 import json
+
 # graph tools
 import pygame, sys
 from pygame.locals import *
@@ -17,7 +21,7 @@ from tkinter import PhotoImage
 
 # set up the colors and dims
 VOID = (0, 0, 0)              # black desert cell
-MOVE = (0, 0, 0, 0)      # grey move 
+MOVE = (0, 0, 0, 0)           # grey dead
 SUSCEPTIBLE = (255, 255, 255) # white live and susceptible cell
 INFECTED = (255, 0, 0)        # red live and infected cell
 RECOVERED = (0, 255, 0)       # green live or dead recovered cell
