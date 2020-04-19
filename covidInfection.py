@@ -1,14 +1,16 @@
-# git
+# git status
 # git add file
 # git commit -m "msg"
-# git push master origin
+# git push -u master origin
+
 # todo:
-# add dead cell with prob grey
+# add dead cell with deadProb, add intensive therapy availability
 # add compare 2 world
 # graph display movements: line /line, exist line(color) line(/color) ?
 
 import random
 import json
+import numpy as np
 
 # graph tools
 import pygame, sys
@@ -16,7 +18,6 @@ from pygame.locals import *
 
 #plot tools
 import matplotlib.pyplot as plt
-import numpy as np
 from tkinter import PhotoImage
 
 # set up the colors and dims
@@ -75,12 +76,13 @@ class covidInfections:
     self.maxInfected = 0
     self.cicle = covidInit["cicles"]
     self.population = covidInit["population"]
-    # create homes
-    for x in range(self.dimX):
-      worldRow = []
-      for y in range(self.dimY):
-        worldRow.append(-1)
-      self.world.append(worldRow) 
+# create homes
+#    for x in range(self.dimX):
+#      worldRow = []
+#      for y in range(self.dimY):
+#        worldRow.append(-1)
+#      self.world.append(worldRow) 
+    self.world = np.full((self.dimX, self.dimY), -1)
     if self.graph:
       graphRow = "{:12}{:12}{:12}{:12}{:12}{:12}{:6}{:6}".format("cicle", "population", "density", "infectProb", "socialSep", "maxInfected", "dimX", "dimY")
       putText(FRAME, self.dimY*DY+5.5*FRAME, LEGEND, VOID, graphRow)
@@ -197,14 +199,14 @@ class covidInfections:
         cicleList.append(self.cicle)
       for x in range(self.dimX):
         for y in range(self.dimY):
-          if self.world[x][y] > 0:
-            self.world[x][y] +=1
+          if self.world[x][y]>0:
+            self.world[x][y]+=1
             # if is infected may travel
             self.move(x,y)
           if self.world[x][y] == self.infectDuration:
             # if infectDuration is passed, recovered or dead
             self.infected -= 1
-            self.recovered +=1
+            self.recovered += 1
             if self.graph:
               self.drawCell(x,y)
 
@@ -233,6 +235,19 @@ class covidInfections:
     print(json.dumps(self.init, indent = 2))
     self.f.write(json.dumps(self.init, indent = 2))
     self.f.close()
+    
+    void=0
+    at15=0
+    other=0
+    for x in range(self.dimX):
+      for y in range(self.dimY):
+        if self.world[x][y] == -1:
+          void+=1
+        elif self.world[x][y] == 15:
+          at15+=1
+        else:
+          other+=1
+    print("void cells: "+str(void), "@infectDuration: "+str(at15), "$moreInfectDuration: "+str(other))
 
     if self.plot:
       dataPlot = {
@@ -338,8 +353,10 @@ def plot(dataPlot):
   plt.show()
 
 def main():
-  with open('covidInfections.json') as f:
-    covidWorld = json.load(f)["covidWorld"]
+  f=open('covidInfections.json')
+  covidWorld = json.load(f)["covidWorld"]
+  f.close()
+
   if covidWorld["graph"]:
     initGraph(covidWorld["dimX"], covidWorld["dimY"])
   w=covidInfections(covidWorld)

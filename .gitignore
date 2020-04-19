@@ -134,3 +134,8 @@ bkUp/
 graph/
 plot/
 covidItaData/
+
+#to avoid copy of students
+#covidInfections.py
+#covidInfections.json
+

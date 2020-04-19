@@ -1,0 +1,96 @@
+=== Covid computational infection simulation
+
+--- world[x][y] = covidLife in days
+covidLife == -1: void cell, uninhabited  
+covidLife == -2: dead  
+covidLife == 1..infectDuration: infected  
+
+--- to count
+susceptible:  
+  covidLife = 0
+infected:  
+  covidLife > 0 and covidLife < infectDuration  
+recovered:  
+  covidLife >= infectDuration  
+
+... create SPHERICAL world
+world = []  
+create homes  
+for x in range(dimX):  
+  worldRow = []  
+  for y in range(dimY):  
+    worldRow.append(-1)  
+    world.append(worldRow) 
+import numpy as np  
+a=np.full((2,3),-1) #a=np.full((rows, columns),value)  
+  
+... event with prob
+  if (prob > 1 or prob < 0):
+    raise Exception("prob must be in [0.0, 1.0]")
+  if random.uniform(0,1) <= prob:
+    return True  
+  else:  
+    return False 
+
+... populate: compute population dimX * dimY * humanDensity
+import random  
+random.randint(0,2) ==> 0,1,2  
+for range(1, population)  
+  x = random.randint(0,dimX-1)  
+  y = random.randint(0,dimY-1)  
+  world[x][y] = 0 # alive and in health  
+  susceptible +=1 
+
+... insert zero patient
+x0=random.randint(0,dimX-1)  
+y0=random.randint(0,dimY-1)  
+  
+... move(x,y):
+destX = (x + dx) % dimX    # -6 % 4 = 2  
+destY = (y + dy) % dimY  
+  
+... infectNeighbour
+infect with infectProb a square 3x3 around (destX,destY)  
+[#,#,#]  
+[#,O,#]  
+[#,#,#]  
+if cell infected  
+  susceptible-=1  
+  infected+=1  
+  
+... cicle world
+cicle=0  
+while not flock immunity:  
+  from: susceptible = population, recovered=0, infected=0  
+  to: susceptible =0, infected=0, recovered=population: flock immunity (immunita' di gregge)  
+  if infected:  
+    move()  #   
+    covidLife+=1  
+    if covidLife == infectionDuration:  
+      infected-=1  
+      recovered+=1  
+
+  cicle= cicle+1  
+  
+--- input:
+{  
+  "dimX": 120,  
+  "dimY": 20,  
+  "humanDensity": 0.1,  
+  "infectProb": 0.5,  
+  "infectDuration": 15,  
+  "socialSeparation": 0.1, # 1-moveProb  
+}
+  
+--- output:
+  (population)  
+  maxCicle # flock immunity  
+  maxInfected # real damage deads proportional  
+
+--- how vary maxCicle and maxInfected with:
+  humanDensity,  
+  infectProb,  
+  infectDuration,  
+  socialSeparation,  
+  
+--- how operatively can we reduce covid damage ?
