@@ -136,6 +136,6 @@ plot/
 covidItaData/
 
 #to avoid copy of students
-#covidInfections.py
-#covidInfections.json
+covidInfections.py
+covidInfections.json
 
