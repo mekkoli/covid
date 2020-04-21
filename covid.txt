@@ -86,6 +86,8 @@ while not flock immunity:
   (population)  
   maxCicle # flock immunity  
   maxInfected # real damage deads proportional  
+  csv txt file: 4 fields
+  cicle, susceptible, infected, recovered
 
 --- how vary maxCicle and maxInfected with:
   humanDensity,  
