@@ -1,0 +1,25 @@
+{
+  "covidWorld": {
+    "ver":                "1.2",  "#": "covid computational infection simulation",
+    "graph":              false,  "#": "do cicle graph wolrd",  
+    "plot":               false,  "#": "do final plot",  
+    "printTerm":          true,   "#": "do consolle print",  
+    "fileName":           "",     "#": "file name with explicit parametrs",
+    "dirName":            "data", "#": "subdir where put data csv files",
+
+    "dimX":               120,    "#": "height",
+    "dimY":               20,     "#": "width",
+    "population":         0,      "#": "population",
+    "humanDensity":       0.1,    "#": "human density or cells density",
+    "infectProb":         0.5,    "#": "infection probability",
+    "infectDuration":     15,     "#": "desease duration", 
+    "socialSeparation":   0.9,    "#": "mean prob to travel when infected without mask or hands clean ...",
+    "maxInfected":        0,      "#": "max infected",
+    "cicles":             0,      "#": "days",
+
+    "deadSim":            true,   "#": "do dead simulation ",
+    "deadProb":           0.01,   "#": "dead probability",
+    "deadCicles":         4,      "#": "dead prob cicles if not avail intensive care",
+    "intensCareAvail":    0.1,    "#": "population relative avaliability of intensive care places"
+  }  
+}

@@ -137,5 +137,4 @@ covidItaData/
 
 #to avoid copy of students
 covidInfection.py
-covidInfection.json
 
